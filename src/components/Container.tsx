@@ -5,26 +5,16 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
-import { useTheme } from "react-native-paper";
 
+import { CustomDarkTheme } from "@app/themes/theme";
 interface Props {
   style?: Object;
 }
 
 const Container: React.FC<Props> = ({ children }) => {
-  const { colors } = useTheme();
-
   return (
-    <KeyboardAvoidingView
-      style={{
-        flex: 1,
-        backgroundColor: colors.background,
-        borderColor: colors.background,
-      }}
-      behavior="padding"
-      enabled
-    >
-      <ScrollView style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+      <ScrollView>
         <View style={{ marginBottom: 60 }}>{children}</View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -35,6 +25,9 @@ export default Container;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: CustomDarkTheme.colors.background,
+    borderColor: CustomDarkTheme.colors.background,
     paddingHorizontal: 10,
     paddingTop: 20,
   },
