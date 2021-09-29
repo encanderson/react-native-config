@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "newton-app",
+    "slug": "newton-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "newton-app"
+}
