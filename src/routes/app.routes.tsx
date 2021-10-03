@@ -1,14 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
 
 import AuthGuard from "./AuthGuard";
+
+import TabScreens from "@app/screens/tabs";
 
 const AppRoutes: React.FC = () => {
   return (
     <AuthGuard>
-      <View>
-        <Text>User</Text>
-      </View>
+      <TabScreens />
     </AuthGuard>
   );
 };

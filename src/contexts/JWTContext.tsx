@@ -37,7 +37,7 @@ export const JWTProvider = ({ children }: ChildProps) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const init = async () => {
       setinitialState(state);
     };
