@@ -12,20 +12,42 @@ import InputIcon from "@components/InputIcon";
 import { RootStackParamList } from "@app/stacks/types";
 import { styles } from "@assets/styles/styles";
 
+import useAuth from "@hooks/useAuth";
+
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 const LoginScreen = ({ navigation }: Props) => {
   const { colors } = useTheme();
+  const { login } = useAuth();
+
+  const [userLogin, setUserLogin] = React.useState({
+    username: "",
+    password: "",
+  });
+
+  const handleLogin = async () => {
+    await login(userLogin);
+  };
 
   return (
     <Container>
       <View style={styles.containerAuth}>
         <InputText
-          onChangeText={(value) => console.log(value)}
+          onChangeText={(value) =>
+            setUserLogin({
+              ...userLogin,
+              username: value,
+            })
+          }
           placeholder={"Email"}
         />
         <InputIcon
-          onChangeText={(value) => console.log(value)}
+          onChangeText={(value) =>
+            setUserLogin({
+              ...userLogin,
+              password: value,
+            })
+          }
           placeholder={"Senha"}
           isSecure
         />
@@ -37,7 +59,7 @@ const LoginScreen = ({ navigation }: Props) => {
           </TouchableOpacity>
         </View>
         <Button
-          onPress={() => console.log("ok")}
+          onPress={() => handleLogin()}
           color={colors.primary}
           title={"Login"}
         />

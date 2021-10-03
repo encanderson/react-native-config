@@ -45,6 +45,15 @@
       ],
       "@themes/*": [
         "./src/themes/*"
+      ],
+      "@contexts/*": [
+        "./src/contexts/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
       ]
     }
   },
