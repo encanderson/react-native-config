@@ -1,14 +1,22 @@
 import React from "react";
+import { TouchableOpacity } from "react-native";
 
 import { useTheme } from "react-native-paper";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { DrawerActions } from "@react-navigation/native";
+
 import Icon from "react-native-vector-icons/FontAwesome5";
+
+import { RootDrawerParamList } from "@utils/types";
 
 import HomeScreen from "./HomeSreen";
 
+type Props = NativeStackScreenProps<RootDrawerParamList>;
+
 const TabStack = createBottomTabNavigator();
 
-const TabScreens: React.FC = () => {
+const TabScreens = ({ navigation }: Props) => {
   const { colors } = useTheme();
 
   return (
@@ -46,7 +54,20 @@ const TabScreens: React.FC = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <TabStack.Screen name="Home" component={HomeScreen} />
+      <TabStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerLeft: () => (
+            <TouchableOpacity
+              style={{ paddingLeft: 15 }}
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+              <Icon name={"bars"} size={20} color={"white"} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </TabStack.Navigator>
   );
 };

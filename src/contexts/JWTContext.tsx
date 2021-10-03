@@ -5,10 +5,14 @@ import { ChildProps, ReduxProps } from "@utils/types";
 
 import { LOGIN } from "@store/actions";
 
+interface User {
+  name: string;
+  username: string;
+}
 interface AuthContext {
   isLoggedIn: boolean;
   isInitialized: boolean;
-  user: null;
+  user: User | null;
   login(data: { username: string; password: string }): Promise<void>;
   logout(): Promise<void>;
 }
@@ -45,7 +49,13 @@ export const JWTProvider = ({ children }: ChildProps) => {
   }, [state]);
 
   const logout = async () => {
-    console.log("logout");
+    dispatch({
+      type: LOGIN,
+      payload: {
+        isLoggedIn: false,
+        user: null,
+      },
+    });
   };
   return (
     <JWTContext.Provider

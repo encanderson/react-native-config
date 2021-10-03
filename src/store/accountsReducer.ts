@@ -3,7 +3,9 @@ import { ACCOUNT_INITIALIZE, LOGIN, LOGOUT } from "./actions";
 export const initialState = {
   isLoggedIn: false,
   isInitialized: false,
-  user: null,
+  user: {
+    name: ""
+  },
 };
 
 const accountsReducer = (state = initialState, action: any) => {

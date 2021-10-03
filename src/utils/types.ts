@@ -15,3 +15,7 @@ export interface ReduxProps {
     user: null;
   };
 }
+
+export type RootDrawerParamList = {
+  TabScreens: undefined;
+};
